@@ -1,0 +1,64 @@
+{
+  "sample_queries": [
+    {
+      "query_id": 1,
+      "description": "Basic property lookup",
+      "request": {
+        "land_id": 1
+      }
+    },
+    {
+      "query_id": 2,
+      "description": "Property with family tree analysis",
+      "request": {
+        "land_id": 3
+      }
+    },
+    {
+      "query_id": 3,
+      "description": "High risk property assessment",
+      "request": {
+        "land_id": 5
+      }
+    },
+    {
+      "query_id": 4,
+      "description": "Check encumbrances on property",
+      "request": {
+        "land_id": 2
+      }
+    },
+    {
+      "query_id": 5,
+      "description": "Property with custom AI query",
+      "request": {
+        "land_id": 1,
+        "query": "What are the major risks I should be concerned about for this property?"
+      }
+    },
+    {
+      "query_id": 6,
+      "description": "Commercial property analysis",
+      "request": {
+        "land_id": 7
+      }
+    }
+  ],
+  "test_scenarios": [
+    {
+      "scenario": "Clear title property",
+      "land_id": 1,
+      "expected_risk_level": "Low"
+    },
+    {
+      "scenario": "Property with encumbrances",
+      "land_id": 5,
+      "expected_risk_level": "Medium"
+    },
+    {
+      "scenario": "Complex ownership history",
+      "land_id": 3,
+      "expected_risk_level": "Medium"
+    }
+  ]
+}
