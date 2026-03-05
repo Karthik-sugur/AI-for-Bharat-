@@ -110,7 +110,7 @@ POST /api/risk-assessment
 ## 🏗️ Architecture
 
 ```
-LandLedger/
+Lineage/
 ├── backend/
 │   ├── main.py              # Flask API server
 │   ├── config.py            # Environment config
