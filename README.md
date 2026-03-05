@@ -72,7 +72,7 @@ Frontend runs at: `http://localhost:3000`
 
 ## 📊 Data Structure
 
-- **1000+ property records** in `backend/data/synthetic_data.json`
+- **1000 property records** in `backend/data/synthetic_data.json`
 - Each property includes:
   - Ownership chain (multi-generational)
   - Family tree structure
