@@ -1,4 +1,4 @@
-# 🏛️ LandLedger - AI-Powered Land Title Intelligence System
+# 🏛️ Lineage - AI-Powered Land Title Intelligence System
 
 **AI for Bharat Hackathon**
 
