@@ -71,7 +71,7 @@ Citizens and banks must manually interpret complex legal records to verify prope
 
 - Python 3.8+
 - Node.js 18+
-- Google Gemini API key
+- AWS account (for Bedrock / Textract access)
 
 ### Backend Setup
 
