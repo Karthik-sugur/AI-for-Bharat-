@@ -26,6 +26,33 @@ Lineage is an AI-powered system that analyzes land ownership records, detects le
 - **RESTful API**  
   Complete backend API for property intelligence and analysis.
 
+  ## 🤖 AI Value
+
+Traditional land record portals only store documents.  
+Citizens and banks must manually interpret complex legal records to verify property ownership.
+
+**Lineage introduces an AI reasoning layer that converts land records into actionable insights.**
+
+### What the AI Layer Does
+
+- **Ownership Lineage Reconstruction**  
+  Builds a chain of ownership across generations to understand how property rights were transferred.
+
+- **Risk Detection**  
+  Identifies structural issues such as:
+  - Missing mutations  
+  - Broken ownership chains  
+  - Active encumbrances or loans  
+  - Potential inheritance disputes  
+
+- **Title Confidence Score**  
+  Calculates a **CIBIL-style score (0–1000)** indicating how safe a property title is.
+
+- **Citizen-Friendly Explanations**  
+  Converts complex legal analysis into simple insights for citizens.
+
+**Result:** land records become understandable, verifiable, and usable for citizens, banks, and public systems.
+
 ## 📋 API Endpoints
 
 | Endpoint | Method | Description |
@@ -119,6 +146,26 @@ POST /api/risk-assessment
   "land_id": "LAND-001"
 }
 ```
+## ☁️ AWS Architecture
+
+The system is designed using AWS-native services to enable scalable AI-driven property analysis.
+
+**Architecture Flow**
+
+User → React Frontend (AWS Amplify)
+
+Frontend → API Gateway
+
+API Gateway → AWS Lambda (analysis engine)
+
+Lambda integrates with:
+
+- **Amazon Bedrock** – Generative AI reasoning and explanations  
+- **Amazon Textract** – Extract structured data from land documents  
+- **Amazon DynamoDB** – Store property metadata and risk scores  
+- **Amazon S3** – Store uploaded land documents  
+
+This architecture enables scalable document understanding, ownership reasoning, and AI-driven risk detection.
 
 ## 🏗️ Architecture
 
@@ -170,11 +217,25 @@ Title confidence score (0-1000):
 Sample property IDs for testing:
 - `LAND-001` to `LAND-1000`
 
-Example locations:
-- Mumbai, Maharashtra
-- Bangalore, Karnataka
-- Hyderabad, Telangana
-- Chennai, Tamil Nadu
+### Example Locations
+
+The prototype focuses on Bangalore and surrounding areas:
+
+- Whitefield
+- Koramangala
+- HSR Layout
+- Jayanagar
+- Yelahanka
+- Hebbal
+- Electronic City
+- Bannerghatta
+- Sarjapur
+- Devanahalli
+- Indiranagar
+- Marathahalli
+- JP Nagar
+- Rajajinagar
+- Bellandur
 
 ## 📚 Documentation
 
@@ -183,14 +244,29 @@ Detailed docs in `/docs`:
 - [Setup Guide](docs/SETUP_GUIDE.md)
 - [Gemini Integration](docs/GEMINI_INTEGRATION.md)
 - [Data Format](docs/DATA_FORMAT.md)
-
 ## 🛠️ Tech Stack
 
-- **Backend**: Flask 3.0 + Python 3.x
-- **Frontend**: React 18 + Vite + TypeScript
-- **AI**: Google Gemini (gemini-pro)
-- **Styling**: CSS with custom design system
-- **Data**: JSON-based property dataset
+**Frontend**
+- React 18
+- Vite
+- TypeScript
+
+**Backend**
+- Flask 3.0
+- Python
+
+**AI Layer**
+- Amazon Bedrock (Generative AI reasoning)
+- Amazon Textract (document extraction)
+
+**Infrastructure**
+- AWS Lambda
+- Amazon S3
+- Amazon DynamoDB
+- Amazon API Gateway
+
+**Data**
+- JSON-based synthetic property dataset (1000 properties)
 
 ## 🔑 Environment Variables
 
