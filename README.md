@@ -1,17 +1,30 @@
-# 🏛️ Lineage - AI-Powered Land Title Intelligence System
+# 🏛️ Lineage – AI-Powered Land Title Intelligence System
 
 **AI for Bharat Hackathon**
 
-An intelligent system for analyzing land titles, detecting risks, and providing AI-powered insights using Google Gemini.
+Lineage is an AI-powered system that analyzes land ownership records, detects legal risks, and reconstructs property lineage using AWS Generative AI services.
+
+*It introduces a **CIBIL-style Title Confidence Score** for land ownership, transforming fragmented land records into machine-interpretable trust signals.*
 
 ## 🌟 Features
 
-- **AI-Powered Analysis**: Gemini AI integration for intelligent property assessment
-- **Modern React Frontend**: Beautiful, responsive UI built with React + Vite + TypeScript
-- **Risk Detection**: Comprehensive title risk scoring (0-1000 scale)
-- **Family Tree Mapping**: Visualize ownership lineage and inheritance patterns
-- **Encumbrance Tracking**: Monitor loans, liens, and legal claims
-- **RESTful API**: Complete API for property intelligence
+- **AI-Powered Property Analysis**  
+  Uses generative AI to analyze land ownership records and detect structural risks.
+
+- **Modern React Frontend**  
+  Clean, responsive UI built with React + Vite + TypeScript.
+
+- **Risk Detection System**  
+  Generates a **Title Confidence Score (0–1000)** based on ownership lineage, legal flags, and documentation gaps.
+
+- **Ownership Lineage Mapping**  
+  Visualizes multi-generational property ownership and inheritance patterns.
+
+- **Encumbrance Tracking**  
+  Detects loans, liens, and other financial/legal claims attached to the property.
+
+- **RESTful API**  
+  Complete backend API for property intelligence and analysis.
 
 ## 📋 API Endpoints
 
