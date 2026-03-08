@@ -1,39 +1,115 @@
-# 🏛️ LandLedger
-
+# 🏛️ Lineage
 ### AI-Powered Land Title Intelligence for India
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React">
-  <img src="https://img.shields.io/badge/AWS-Bedrock%20|%20Textract%20|%20Polly-FF9900?style=flat-square&logo=amazon-aws" alt="AWS">
-  <img src="https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" />
+  <img src="https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square&logo=fastapi" />
+  <img src="https://img.shields.io/badge/AWS-Bedrock%20%7C%20Textract%20%7C%20Polly-FF9900?style=flat-square&logo=amazon-aws" />
 </p>
 
 ---
 
-## 🎯 Problem Statement
+# 🌏 Vision
 
-Land ownership verification in India is a **legal minefield**:
+Land ownership in India is one of the **most legally complex systems in the world**.
 
-- **Fragmented Records**: 28 states, each with different land registry systems
-- **Missing Documentation**: Decades of undocumented transfers and informal agreements
-- **Complex Inheritance**: Hindu Succession Act, partition deeds, and family disputes
-- **Encumbrance Opacity**: Hidden loans, liens, and legal claims buried in paper records
-- **Language Barriers**: Records in regional languages inaccessible to many buyers
+Every property carries decades of history —  
+sale deeds, inheritance transfers, mutation records, encumbrances, court disputes and family partitions.
 
-**One unclear chain of custody can block a sale for years.**
+Despite increasing digitization, **understanding whether a title is actually safe is still extremely difficult**.
+
+Citizens rely on lawyers.  
+Banks rely on manual verification.  
+Government portals only show **documents — not insights**.
+
+**Lineage transforms fragmented land records into actionable intelligence.**
+
+Instead of reading hundreds of legal documents, users receive:
+
+• Ownership lineage reconstruction  
+• Legal risk detection  
+• AI-generated explanations  
+• A **Title Confidence Score**
+
+Our goal is to make land ownership **transparent, verifiable, and trustworthy**.
 
 ---
 
-## 💡 Our Solution
+# 🎯 Problem
 
-LandLedger uses **AI as the main intelligence layer** (not a decorator) to:
+Property verification in India suffers from five structural issues:
 
-1. **Reconstruct Ownership Lineage** — Traces every owner back to the original allotment
-2. **Detect Legal Risks** — Surfaces encumbrances, disputes, and missing mutations
-3. **Generate Title Confidence Score** — A 0-1000 score with plain-language explanation
-4. **Multilingual Audio Summaries** — Hindi/English narration for accessibility
-5. **Document OCR** — Extract data from scanned land deeds automatically
+### 1. Fragmented Land Systems
+India has **28 state land registries**, each with different formats, rules, and record systems.
+
+### 2. Broken Ownership Chains
+Decades of undocumented transfers or missing mutation entries can break the ownership timeline.
+
+### 3. Hidden Encumbrances
+Loans, liens, or litigation may exist but are buried across multiple registries.
+
+### 4. Complex Inheritance Laws
+Joint family ownership, coparcenary rights, and partition deeds complicate title verification.
+
+### 5. Legal Language Barriers
+Land records are often written in regional languages or dense legal terminology.
+
+Even a **single missing record can block a property sale for years.**
+
+---
+
+# 💡 Our Solution
+
+Lineage introduces a new concept:
+
+## **Title Intelligence**
+
+Instead of simply displaying documents, the platform **analyzes ownership history using AI**.
+
+### Core Capabilities
+
+1️⃣ **Ownership Lineage Reconstruction**
+
+Rebuilds the complete ownership chain across generations.
+
+2️⃣ **Legal Risk Detection**
+
+Identifies encumbrances, disputes, mutation gaps, and structural issues.
+
+3️⃣ **Title Confidence Score**
+
+A **0–1000 trust score** inspired by credit scoring models like CIBIL.
+
+4️⃣ **Plain-Language Legal Explanation**
+
+AI summarizes complex legal situations into understandable insights.
+
+5️⃣ **Multilingual Accessibility**
+
+Users can listen to analysis through **Hindi and English voice narration**.
+
+6️⃣ **Document OCR**
+
+Automatically extracts data from scanned land records.
+
+---
+
+# 🧠 Synthetic Dataset
+
+To demonstrate real-world complexity, the prototype uses a **synthetic dataset of 1000 simulated land records**.
+
+Each record includes:
+
+• ownership transfers  
+• inheritance events  
+• mutation records  
+• encumbrances  
+• legal complications  
+
+### Risk Gradient
+
+The dataset intentionally increases in complexity.
 
 ---
 
@@ -41,7 +117,7 @@ LandLedger uses **AI as the main intelligence layer** (not a decorator) to:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                              LandLedger Architecture                          │
+│                              Lineage Architecture                          │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                               │
 │   ┌─────────────┐         ┌─────────────────────────────────────────────┐    │
@@ -157,7 +233,7 @@ python seed_dynamodb.py
 ## 📁 Project Structure
 
 ```
-LandLedger/
+Lineage/
 ├── frontend/                    # React Application
 │   ├── src/
 │   │   ├── App.js              # Main application component
@@ -196,6 +272,41 @@ LandLedger/
 ```
 
 ---
+
+# ⚙️ Technology Stack
+
+### Frontend
+
+• React 18  
+• Interactive property analysis dashboard  
+• Ownership lineage visualization  
+
+### Backend
+
+• Python  
+• REST API architecture  
+• Risk scoring engine  
+
+### AI Infrastructure
+
+| Service | Purpose |
+|-------|--------|
+| Amazon Bedrock | AI reasoning and explanation |
+| Amazon Textract | Document OCR |
+| Amazon Polly | Voice narration |
+
+### Cloud Infrastructure
+
+| Service | Role |
+|-------|-------|
+| Amazon S3 | Document storage |
+| Amazon DynamoDB | Metadata and caching |
+
+---
+
+# 🚀 Quick Start
+
+### Backend Setup
 
 ## 🔌 API Endpoints
 
@@ -289,19 +400,32 @@ Result: Pending partition suit, multiple coparceners, protected tenant
 ```
 
 ---
+---
 
-## 👥 Team
+# 🚀 Future Roadmap
 
-**Hackathon 2026 Submission**
+Lineage can evolve into a **national land intelligence infrastructure layer**.
+
+Potential integrations include:
+
+• State land registries (Bhulekh, Bhoomi, Dharani)  
+• Court case databases  
+• Bank collateral verification systems  
+• Property tax registries  
+• National property transaction networks  
+
+The long-term goal is to build **India's first AI-driven land title verification layer.**
 
 ---
 
-## 📜 License
+# 👥 Team
 
-MIT License - See LICENSE file for details
+**Iterium**
+
+AI for Bharat Hackathon Submission
 
 ---
 
 <p align="center">
-  <strong>LandLedger</strong> — Making Property Verification Intelligent 🏛️
+<strong>Lineage</strong> — Making Land Ownership Transparent 🏛️
 </p>
