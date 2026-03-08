@@ -1,294 +1,307 @@
-# 🏛️ Lineage – AI-Powered Land Title Intelligence System
+# 🏛️ LandLedger
 
-**AI for Bharat Hackathon**
+### AI-Powered Land Title Intelligence for India
 
-Lineage is an AI-powered system that analyzes land ownership records, detects legal risks, and reconstructs property lineage using AWS Generative AI services.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/AWS-Bedrock%20|%20Textract%20|%20Polly-FF9900?style=flat-square&logo=amazon-aws" alt="AWS">
+  <img src="https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square&logo=fastapi" alt="FastAPI">
+</p>
 
-*It introduces a **CIBIL-style Title Confidence Score** for land ownership, transforming fragmented land records into machine-interpretable trust signals.*
+---
 
-## 🌟 Features
+## 🎯 Problem Statement
 
-- **AI-Powered Property Analysis**  
-  Uses generative AI to analyze land ownership records and detect structural risks.
+Land ownership verification in India is a **legal minefield**:
 
-- **Modern React Frontend**  
-  Clean, responsive UI built with React + Vite + TypeScript.
+- **Fragmented Records**: 28 states, each with different land registry systems
+- **Missing Documentation**: Decades of undocumented transfers and informal agreements
+- **Complex Inheritance**: Hindu Succession Act, partition deeds, and family disputes
+- **Encumbrance Opacity**: Hidden loans, liens, and legal claims buried in paper records
+- **Language Barriers**: Records in regional languages inaccessible to many buyers
 
-- **Risk Detection System**  
-  Generates a **Title Confidence Score (0–1000)** based on ownership lineage, legal flags, and documentation gaps.
+**One unclear chain of custody can block a sale for years.**
 
-- **Ownership Lineage Mapping**  
-  Visualizes multi-generational property ownership and inheritance patterns.
+---
 
-- **Encumbrance Tracking**  
-  Detects loans, liens, and other financial/legal claims attached to the property.
+## 💡 Our Solution
 
-- **RESTful API**  
-  Complete backend API for property intelligence and analysis.
+LandLedger uses **AI as the main intelligence layer** (not a decorator) to:
 
-  ## 🤖 AI Value
+1. **Reconstruct Ownership Lineage** — Traces every owner back to the original allotment
+2. **Detect Legal Risks** — Surfaces encumbrances, disputes, and missing mutations
+3. **Generate Title Confidence Score** — A 0-1000 score with plain-language explanation
+4. **Multilingual Audio Summaries** — Hindi/English narration for accessibility
+5. **Document OCR** — Extract data from scanned land deeds automatically
 
-Traditional land record portals only store documents.  
-Citizens and banks must manually interpret complex legal records to verify property ownership.
+---
 
-**Lineage introduces an AI reasoning layer that converts land records into actionable insights.**
+## 🏗️ Architecture
 
-### What the AI Layer Does
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              LandLedger Architecture                          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│   ┌─────────────┐         ┌─────────────────────────────────────────────┐    │
+│   │   React     │   API   │              Python Backend (FastAPI)        │    │
+│   │   Frontend  │◄───────►│  ┌─────────┐  ┌──────────┐  ┌───────────┐   │    │
+│   │             │         │  │ Routes  │──│ Services │──│ AWS SDK   │   │    │
+│   └─────────────┘         │  └─────────┘  └──────────┘  └───────────┘   │    │
+│                           └──────────────────┬──────────────────────────┘    │
+│                                              │                                │
+│   ┌──────────────────────────────────────────┼──────────────────────────────┐│
+│   │                        AWS Cloud Services│                              ││
+│   │                                          ▼                              ││
+│   │  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐            ││
+│   │  │ Amazon Bedrock │  │ Amazon Textract│  │ Amazon Polly   │            ││
+│   │  │ (Claude 3)     │  │ (Document OCR) │  │ (Text-to-Speech)│           ││
+│   │  │                │  │                │  │                │            ││
+│   │  │ • Legal Analysis│ │ • Scanned Deeds│  │ • English Voice│            ││
+│   │  │ • Risk Assessment│ │ • Mutation Forms│ │ • Hindi Voice  │            ││
+│   │  │ • Recommendations│ │ • 7/12 Extracts│  │                │            ││
+│   │  └────────────────┘  └────────────────┘  └────────────────┘            ││
+│   │                                                                         ││
+│   │  ┌────────────────┐  ┌────────────────┐                                ││
+│   │  │ Amazon S3      │  │ Amazon DynamoDB│                                ││
+│   │  │ (Storage)      │  │ (Caching)      │                                ││
+│   │  │                │  │                │                                ││
+│   │  │ • Documents    │  │ • Analysis Cache│                               ││
+│   │  │ • Audio Files  │  │ • Session Data │                                ││
+│   │  └────────────────┘  └────────────────┘                                ││
+│   └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
 
-- **Ownership Lineage Reconstruction**  
-  Builds a chain of ownership across generations to understand how property rights were transferred.
-
-- **Risk Detection**  
-  Identifies structural issues such as:
-  - Missing mutations  
-  - Broken ownership chains  
-  - Active encumbrances or loans  
-  - Potential inheritance disputes  
-
-- **Title Confidence Score**  
-  Calculates a **CIBIL-style score (0–1000)** indicating how safe a property title is.
-
-- **Citizen-Friendly Explanations**  
-  Converts complex legal analysis into simple insights for citizens.
-
-**Result:** land records become understandable, verifiable, and usable for citizens, banks, and public systems.
-
-## 📋 API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/search` | POST | Search properties by survey number |
-| `/api/analyze` | POST | Complete AI property analysis |
-| `/api/family-tree` | POST | Ownership lineage & family tree |
-| `/api/risk-assessment` | POST | Comprehensive risk scoring |
-| `/api/encumbrances` | POST | Active loans/liens check |
-| `/api/properties` | GET | List all properties |
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.8+
-- Node.js 18+
-- AWS account (for Bedrock / Textract access)
+- Python 3.11+
+- Node.js 18+ (for frontend development)
+- AWS Account with credentials
+- AWS CLI configured
 
-### Backend Setup
+### 1. Clone & Setup Backend
 
-```powershell
-cd "c:\Users\Admin\Documents\Railway_sprint_1\Land ledger"
-
-# Create and activate virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-# Install dependencies
-pip install -r backend/requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env and add your GEMINI_API_KEY
-
-# Start backend server
+```bash
 cd backend
-python main.py
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/Mac
+
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your AWS credentials
 ```
 
-Backend runs at: `http://localhost:5000`
+### 2. Run Backend
 
-### Frontend Setup
+```bash
+uvicorn app.main:app --reload --port 8000
+```
 
-```powershell
-cd frontend/land_ledger
+### 3. Run Frontend
 
-# Install dependencies
+```bash
+cd frontend
 npm install
-
-# Start development server
-npm run dev
+npm start
 ```
 
-Frontend runs at: `http://localhost:3000`
+### 4. Access Application
 
-## 📊 Data Structure
-
-- **1000 property records** in `backend/data/synthetic_data.json`
-- Each property includes:
-  - Ownership chain (multi-generational)
-  - Family tree structure
-  - Encumbrance history
-  - Legal status & documentation
-  - Risk indicators
-
-## 🔍 Example API Calls
-
-### Analyze Property
-```bash
-POST /api/analyze
-{
-  "land_id": "LAND-001",
-  "query": "What are the risks?"
-}
-```
-
-### Get Family Tree
-```bash
-POST /api/family-tree
-{
-  "land_id": "LAND-001"
-}
-```
-
-### Risk Assessment
-```bash
-POST /api/risk-assessment
-{
-  "land_id": "LAND-001"
-}
-```
-## ☁️ AWS Architecture
-
-The system is designed using AWS-native services to enable scalable AI-driven property analysis.
-
-**Architecture Flow**
-
-User → React Frontend (AWS Amplify)
-
-Frontend → API Gateway
-
-API Gateway → AWS Lambda (analysis engine)
-
-Lambda integrates with:
-
-- **Amazon Bedrock** – Generative AI reasoning and explanations  
-- **Amazon Textract** – Extract structured data from land documents  
-- **Amazon DynamoDB** – Store property metadata and risk scores  
-- **Amazon S3** – Store uploaded land documents  
-
-This architecture enables scalable document understanding, ownership reasoning, and AI-driven risk detection.
-
-## 🏗️ Architecture
-
-```
-Lineage/
-├── backend/
-│   ├── main.py              # Flask API server
-│   ├── config.py            # Environment config
-│   ├── requirements.txt     # Python dependencies
-│   ├── models/              # Data models (Property, Owner, etc.)
-│   ├── services/            # Business logic
-│   │   ├── gemini_service.py      # AI integration
-│   │   ├── land_records_service.py
-│   │   ├── family_tree_service.py
-│   │   └── risk_analyzer.py
-│   ├── utils/              # Utilities
-│   │   ├── validators.py
-│   │   ├── formatters.py
-│   │   └── data_parser.py
-│   └── data/               # Property dataset
-├── frontend/
-│   └── land_ledger/        # React + Vite + TypeScript app
-│       ├── src/
-│       │   ├── components/  # React components
-│       │   ├── services/    # API client
-│       │   ├── types/       # TypeScript types
-│       │   └── App.tsx      # Main app
-│       └── package.json
-├── docs/                   # Documentation
-└── lineage-data/           # Data generation scripts
-```
-
-## 🎯 Risk Scoring System
-
-Title confidence score (0-1000):
-- **900-1000**: Low Risk - Clear title
-- **850-899**: Medium Risk - Minor issues
-- **700-849**: High Risk - Significant concerns
-- **<700**: Critical Risk - Major defects
-
-### Weighting:
-- Encumbrances: 40%
-- Ownership Gaps: 35%
-- Missing Documents: 15%
-- Legal Flags: 10%
-
-## 🧪 Testing
-
-Sample property IDs for testing:
-- `LAND-001` to `LAND-1000`
-
-### Example Locations
-
-The prototype focuses on Bangalore and surrounding areas:
-
-- Whitefield
-- Koramangala
-- HSR Layout
-- Jayanagar
-- Yelahanka
-- Hebbal
-- Electronic City
-- Bannerghatta
-- Sarjapur
-- Devanahalli
-- Indiranagar
-- Marathahalli
-- JP Nagar
-- Rajajinagar
-- Bellandur
-
-## 📚 Documentation
-
-Detailed docs in `/docs`:
-- [API Documentation](docs/API_DOCUMENTATION.md)
-- [Setup Guide](docs/SETUP_GUIDE.md)
-- [Gemini Integration](docs/GEMINI_INTEGRATION.md)
-- [Data Format](docs/DATA_FORMAT.md)
-## 🛠️ Tech Stack
-
-**Frontend**
-- React 18
-- Vite
-- TypeScript
-
-**Backend**
-- Flask 3.0
-- Python
-
-**AI Layer**
-- Amazon Bedrock (Generative AI reasoning)
-- Amazon Textract (document extraction)
-
-**Infrastructure**
-- AWS Lambda
-- Amazon S3
-- Amazon DynamoDB
-- Amazon API Gateway
-
-**Data**
-- JSON-based synthetic property dataset (1000 properties)
-
-## 🔑 Environment Variables
-
-```env
-GEMINI_API_KEY=your_key_here
-DATA_PATH=./backend/data/synthetic_data.json
-FLASK_ENV=development
-PORT=5000
-```
-
-## 👥 Team
-
-Developed for AI for Bharat Hackathon
-
-## 📄 License
-
-MIT License
-
-## 🤝 Contributing
-
-This is a hackathon project. Contributions welcome!
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
 
 ---
 
-**Status**: ✅ All API endpoints implemented and functional
+## Deployment
+
+### Backend (AWS Elastic Beanstalk)
+
+```bash
+cd backend
+pip install awsebcli
+eb init landledger-backend --platform "Python 3.11" --region ap-south-1
+eb create landledger-env --instance-type t3.small
+eb setenv AWS_REGION=ap-south-1 \
+  S3_BUCKET_NAME=landledger-documents \
+  DYNAMODB_TABLE_NAME=landledger-cache \
+  DYNAMODB_LAND_RECORDS_TABLE=landledger-land-records \
+  BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
+eb deploy
+```
+
+### Frontend (Netlify)
+
+1. Connect GitHub repository to Netlify
+2. Build command: `npm run build`
+3. Publish directory: `frontend/build`
+4. Environment variable: `REACT_APP_API_URL=<your-backend-url>`
+
+### Seed DynamoDB
+
+```bash
+cd backend
+python seed_dynamodb.py
+```
+
+---
+
+## 📁 Project Structure
+
+```
+LandLedger/
+├── frontend/                    # React Application
+│   ├── src/
+│   │   ├── App.js              # Main application component
+│   │   ├── api.js              # API service layer
+│   │   └── ...
+│   ├── public/
+│   └── package.json
+│
+├── backend/                     # Python FastAPI Backend
+│   ├── app/
+│   │   ├── main.py             # FastAPI application
+│   │   ├── config.py           # Configuration settings
+│   │   ├── api/
+│   │   │   └── routes.py       # REST API endpoints
+│   │   ├── services/
+│   │   │   ├── bedrock_service.py    # AI analysis (Claude 3)
+│   │   │   ├── textract_service.py   # Document OCR
+│   │   │   ├── polly_service.py      # Text-to-Speech
+│   │   │   ├── s3_service.py         # Storage service
+│   │   │   ├── dynamo_service.py     # Caching service
+│   │   │   └── land_records_service.py # Core business logic
+│   │   ├── models/
+│   │   │   ├── schemas.py      # Pydantic request models
+│   │   │   └── responses.py    # API response models
+│   │   └── utils/
+│   │       ├── logger.py       # Logging utilities
+│   │       └── exceptions.py   # Custom exceptions
+│   ├── data/
+│   │   └── synthetic_data.json # Sample property records
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── .env.example
+│
+├── docker-compose.yml           # Local development setup
+└── README.md                    # This file
+```
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/health` | Health check |
+| `POST` | `/api/analyze` | Analyze property, get title score |
+| `POST` | `/api/analyze-with-audio` | Analysis + Hindi/English audio |
+| `POST` | `/api/extract-document` | OCR for scanned documents |
+| `GET` | `/api/family-tree/{id}` | Ownership lineage visualization |
+| `POST` | `/api/legal-query` | Ask legal questions |
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:8000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "survey_number": "84/3B",
+    "district": "Bengaluru Urban",
+    "taluk": "Whitefield",
+    "state": "Karnataka"
+  }'
+```
+
+---
+
+## 🧠 AI Services
+
+### Amazon Bedrock (Claude 3 Sonnet)
+- **Property Risk Analysis**: Evaluates ownership chain, encumbrances, litigation
+- **Legal Explanations**: Plain-language summaries of complex legal issues
+- **Recommendations**: Actionable steps to clear title issues
+- **Language Translation**: Hindi translations for regional users
+
+### Amazon Textract
+- **Document Types**: Sale deeds, mutation forms, 7/12 extracts, Patta, RTC
+- **Structured Extraction**: Automatically identifies fields like survey numbers, dates, areas
+- **Handwriting Support**: Handles scanned documents with handwritten annotations
+
+### Amazon Polly
+- **Voices**: Joanna (English), Aditi (Hindi)
+- **Neural TTS**: Natural-sounding audio summaries
+- **Accessibility**: Audio playback for visually impaired users
+
+---
+
+## 💰 Cost Estimation (Hackathon Scale)
+
+| Service | Usage | Estimated Cost |
+|---------|-------|----------------|
+| Bedrock (Claude 3 Sonnet) | ~100 analyses | $5-10 |
+| Textract | ~50 documents | Free tier |
+| Polly | ~500 audio clips | Free tier |
+| S3 | ~100MB | Free tier |
+| DynamoDB | Light caching | Free tier |
+| **Total** | | **~$10-15** |
+
+*Well within $100 AWS free credits budget*
+
+---
+
+## 🔒 Security
+
+- Environment variables for all secrets
+- IAM roles for AWS service access
+- CORS configuration for API security
+- Input validation with Pydantic
+- No credentials in code
+
+---
+
+## 🎯 Demo Scenarios
+
+### Scenario 1: Clean Title (Score: 850+)
+```
+Survey: 84/3B, Whitefield, Bengaluru
+Result: Clear ownership chain, no encumbrances, all mutations updated
+```
+
+### Scenario 2: Medium Risk (Score: 400-700)
+```
+Survey: 221/1A, Mysuru (Agricultural)
+Result: Active bank loan, pending mutation update since 2018
+```
+
+### Scenario 3: High Risk (Score: <400)
+```
+Premises: 12/A, Shyambazar, Kolkata (HUF Property)
+Result: Pending partition suit, multiple coparceners, protected tenant
+```
+
+---
+
+## 👥 Team
+
+**Hackathon 2024 Submission**
+
+---
+
+## 📜 License
+
+MIT License - See LICENSE file for details
+
+---
+
+<p align="center">
+  <strong>LandLedger</strong> — Making Property Verification Intelligent 🏛️
+</p>

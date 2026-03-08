@@ -1,7 +1,4 @@
-# Environment variables
-.env
-.env.*
-!.env.example
+# LandLedger Project .gitignore
 
 # Python
 __pycache__/
@@ -9,36 +6,47 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+env/
 venv/
-.venv/
 ENV/
-
-# Testing
+.venv/
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 .nox/
+coverage.xml
+*.cover
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pytype/
+pyrightconfig.json
 
-# IDE/Editor
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE
 .vscode/
-!.vscode/extensions.json
-!.vscode/settings.json
 .idea/
 *.swp
 *.swo
@@ -46,31 +54,111 @@ htmlcov/
 .project
 .pydevproject
 .settings/
+*.sublime-project
+*.sublime-workspace
 
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
-*.log
-logs/
+# Node/React
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Docker
-.docker/
-
-# Node
-node_modules/
-*.local
+.pnpm-debug.log*
+.npm/
+.yarn/
 
 # Build outputs
-dist/
-dist-ssr/
+frontend/build/
+*.log
 
-# Misc
-*.bak
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# AWS
+.aws/
+*.pem
+
+# Elastic Beanstalk
+.elasticbeanstalk/
+.ebextensions/*.pyc
+
+# Docker
+*.log
+docker-compose.override.yml
+.docker/
+
+# Temporary files
 *.tmp
+*.temp
+*.bak
+temp/
+
+# Sensitive/Secret files
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+*.credentials
+.secrets
+
+# AWS Elastic Beanstalk
+.elasticbeanstalk/
+!.elasticbeanstalk/*.cfg.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Cache
 .cache/
+*.cache
+
+# Local development
+local/
+.local/
+
+# Deployment artifacts
+*.zip
+*.tar.gz
+tmp/
+
+# Secrets
+secrets/
+*.secret
+credentials.json
+service-account.json
+
+# Local data
+*.sqlite
+*.db
+*.sqlite3
+
+# Data (keep structure, ignore large files)
+backend/data/*.csv
+backend/data/*.xlsx
+!backend/data/synthetic_data.json
+
+# Test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+test-results/
+
+# Jupyter
+.ipynb_checkpoints/

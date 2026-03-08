@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Environment
+.env
+*.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary
+*.tmp
+*.bak
+*.log
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# AWS Secrets (NEVER commit these)
+*.pem
+*.key
+credentials/
+secrets/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
