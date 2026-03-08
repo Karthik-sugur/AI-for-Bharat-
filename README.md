@@ -292,7 +292,7 @@ Result: Pending partition suit, multiple coparceners, protected tenant
 
 ## 👥 Team
 
-**Hackathon 2024 Submission**
+**Hackathon 2026 Submission**
 
 ---
 
