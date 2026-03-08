@@ -1,38 +1,61 @@
+# LandLedger Docker Compose
+# Local development environment with all services
+
 version: '3.8'
 
 services:
+  # Backend API Service
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: landledger-api
+    container_name: landledger-backend
     ports:
       - "5000:5000"
     environment:
-      - FLASK_ENV=development
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - DATA_PATH=/app/data/synthetic_data.json
-      - HOST=0.0.0.0
-      - PORT=5000
+      - DEBUG=True
+      - ENVIRONMENT=development
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME:-landledger-documents-dev}
+      - DYNAMODB_TABLE_NAME=${DYNAMODB_TABLE_NAME:-landledger-cache-dev}
     volumes:
       - ./backend:/app
-    restart: unless-stopped
+      - ./backend/data:/app/data
+    command: uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 10s
 
-  # React frontend will be added here
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - backend
+  # Frontend (optional - if you want to serve it via Docker)
+  frontend:
+    image: nginx:alpine
+    container_name: landledger-frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
+  # LocalStack for local AWS services (optional)
+  localstack:
+    image: localstack/localstack:latest
+    container_name: landledger-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,dynamodb
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - localstack-data:/tmp/localstack
+
+volumes:
+  localstack-data:
 
 networks:
   default:

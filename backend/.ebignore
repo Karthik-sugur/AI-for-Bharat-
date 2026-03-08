@@ -1,0 +1,39 @@
+# Elastic Beanstalk Ignore File
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files (set via EB console)
+.env
+.env.local
+.env.*.local
+
+# Git
+.git/
+.gitignore
+
+# Temporary
+*.tmp
+*.bak
+*.log
+
+# Development files
+seed_dynamodb.py
+README.md
